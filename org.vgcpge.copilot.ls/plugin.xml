@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+<extension
+		point="org.eclipse.jdt.ui.javaCompletionProposalComputer"
+		id="copilotCategoryId"
+		name="Unofficial Copilot">
+		<proposalCategory/>
+	</extension>
+	<extension
+         point="org.eclipse.jdt.ui.javaCompletionProposalComputer"
+         id="copilotCategory">
+      <javaCompletionProposalComputer
+            activate="true"
+            categoryId="org.vgcpge.copilot.ls.copilotCategoryId"
+            class="org.vgcpge.copilot.jdt.CopilotCompletionProposalComputer"
+            needsSortingAfterFiltering="true"
+            requiresUIThread="false">
+			<partition type="__dftl_partition_content_type"/>
+      </javaCompletionProposalComputer>
+    </extension>
+ <extension
+       point="org.eclipse.ui.startup">
+    <startup
+          class="org.vgcpge.copilot.jdt.Startup">
+    </startup>
+ </extension>
+</plugin>

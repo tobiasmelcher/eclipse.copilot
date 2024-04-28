@@ -20,7 +20,7 @@ Closed-source [Copilot4Eclipse](https://marketplace.eclipse.org/content/copilot4
 
 # Usage
 See [installation video demo](https://youtu.be/B_QZao3abBw) or follow steps:
-- Copy the link to the update site: https://vgcpge.github.io/eclipse.copilot/
+- Copy the link to the update site: https://github.com/tobiasmelcher/eclipse.copilot/raw/java_editor_support/repository/updatesite/
 - Follow the [instructions](https://help.eclipse.org/latest/topic/org.eclipse.platform.doc.user/tasks/tasks-124.htm) to install the Copilot feature from the update site.
 - Warning dialogs "Trust Authorities" and "Trust Artifacts" will request confirmations. Install at your own risk and consider gifting me a code-signing certificate.
 - If necessary, configure Preferences/Language Servers/Copilot/Node.js executable
@@ -29,6 +29,8 @@ See [installation video demo](https://youtu.be/B_QZao3abBw) or follow steps:
 - A modal dialog will be shown with a code to supply in the browser. Once granted, permission is remembered by Copilot, this is a one-time operation.
 
 # Java
+This branch https://github.com/tobiasmelcher/eclipse.copilot/tree/java_editor_support introduces native support for the Java editor (select "Unofficial Copilot" entry in preference page Java->Editor->Content Assist->Advanced). "JDT Integration for LSP4E" then does not need to be installed.
+
 To work with [Java Development Tools (JDT)](https://www.eclipse.org/jdt/), install additionally "JDT Integration for LSP4E" from the main Eclipse update site.
 You may want to remove less useful completion assistants from Preferences/Java/Editor/Content Assist/Advanced. Leave "Language Server Proposals" enabled.
 

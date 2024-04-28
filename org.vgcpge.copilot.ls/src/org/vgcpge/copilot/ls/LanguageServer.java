@@ -32,6 +32,7 @@ public class LanguageServer implements Closeable {
 	private final SafeCloser closer = new SafeCloser();
 	private final Optional<ProxyConfiguration> proxyConfiguration;
 	private final IOStreams downstream;
+	private static CopilotLanguageServer lastCreatedDownStreamServer;
 
 	public LanguageServer(IOStreams upstream, IOStreams downstream, ExecutorService executorService, Optional<ProxyConfiguration> proxyConfiguration) throws IOException {
 		this.downstream = Objects.requireNonNull(downstream);
@@ -44,6 +45,10 @@ public class LanguageServer implements Closeable {
 			closer.close();
 			throw e;
 		}
+	}
+	
+	public static CopilotLanguageServer getLastCreatedCopilopsLs() {
+		return lastCreatedDownStreamServer;
 	}
 
 	private void startProxy(IOStreams upstream, ExecutorService executorService)
@@ -106,6 +111,7 @@ public class LanguageServer implements Closeable {
 			downStreamServer = downstreamClientLauncher.getRemoteProxy();
 			Future<Void> listenTask = downstreamClientLauncher.startListening();
 			register(() -> listenTask.get(2, TimeUnit.SECONDS));
+			lastCreatedDownStreamServer=downStreamServer;
 		} catch (IOException e) {
 			throw new IllegalStateException(e);
 		}
